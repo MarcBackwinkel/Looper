@@ -1,0 +1,10 @@
+#board {
+	width: 640px;
+	height: 480px;
+	margin: auto;
+}
+
+#slider {
+	width: 640px;
+	margin: auto;
+}
