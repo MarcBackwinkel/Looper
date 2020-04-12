@@ -1,5 +1,14 @@
+import Container from './../Container';
+import CanvasElement from './canvasElement';
+
 class CanvasRenderer {
-	constructor(w, h){
+
+    w: number;
+    h: number;
+    view: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+
+	constructor(w: number, h: number){
 		const canvas = document.createElement("canvas");
 		this.w = canvas.width = w;
 		this.h = canvas.height = h;
@@ -7,9 +16,9 @@ class CanvasRenderer {
 		this.ctx = canvas.getContext("2d");						//with the canvas element in hand we ask for the drawing content called "2d"
 		this.ctx.textBaseline = "top";							//default: bottom, where text at message.pos.y === 0 is not drawn
 	}
-	render(container, clear = true){
+	render(container: Container, clear: boolean = true){
 		const { ctx } = this;
-		function renderRec(container){
+		function renderRec(container: Container){
 			//Render the container children
 			container.children.forEach(child => {
 				if (child.visible == false){
@@ -81,4 +90,4 @@ class CanvasRenderer {
 	}
 }
 
-//export default CanvasRenderer;
+export default CanvasRenderer;

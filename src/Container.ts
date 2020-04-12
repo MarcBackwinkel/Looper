@@ -1,4 +1,11 @@
+import position from './Renderer/canvasElement';
+
 class Container {
+
+    pos: position;
+    children[]: canvasElement;
+    counter: number;
+
 	constructor(){
 		this.pos = {x: 0, y: 0};
 		this.children = [];
@@ -28,3 +35,5 @@ class Container {
 		return this.children.map(f);
 	}
 }
+
+export default Container;
