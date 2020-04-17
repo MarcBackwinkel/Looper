@@ -1,13 +1,14 @@
-import position from './Renderer/canvasElement';
+import Position from './Renderer/Position';
+import { CanvasElement } from './Renderer/CanvasElement';
 
 class Container {
 
-    pos: position;
-    children[]: canvasElement;
+    pos: Position;
+    children[]: CanvasElement;
     counter: number;
 
 	constructor(){
-		this.pos = {x: 0, y: 0};
+		this.pos = new Position(0, 0);
 		this.children = [];
 		this.counter = 0;
 	}
@@ -36,4 +37,4 @@ class Container {
 	}
 }
 
-export default Container;
+export { Container };

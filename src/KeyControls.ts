@@ -1,6 +1,8 @@
 class KeyControls {
+
+    keys: boolean[];
+
 	constructor() {
-		this.keys = {};
 		//Bind event handlers
 		document.addEventListener("keydown", e => {
 			if ([37, 38 , 39, 40].indexOf(e.which) >= 0){
@@ -53,7 +55,7 @@ class KeyControls {
 		return 0;		//no relevant key pressed, no vertical movement requested
 	}
 }
-/*export default KeyControls;*/
+export { KeyControls };
 
 //to find out, which number equals a key use:
 //document.addEventListener("keydown", e => {console.log(`${e.which}: ${e.key}`)}, false);

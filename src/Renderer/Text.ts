@@ -1,8 +1,10 @@
+import { Position } from "./Position";
+
 class Text {
 
-pos = {};
+pos: Position;
 text: string;
-style: string;
+style: any;
 
 	constructor(text: string = "", style = {}){
 		this.pos = {x: 0, y: 0};
@@ -11,4 +13,4 @@ style: string;
 	}
 }
 
-//export default Text;
+export { Text };

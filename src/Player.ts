@@ -206,3 +206,5 @@ class Player {
 		return ((this.pos.x + tolerance < 0) || (this.pos.x - tolerance > w) || (this.pos.y + tolerance < 0) || (this.pos.y - tolerance > h));
 	}
 }
+
+export  { Player };

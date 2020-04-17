@@ -1,5 +1,14 @@
+import { Background } from "./Background";
+import { Container } from "./Container";
+import { Cookie } from "./Cookie";
+import { Game } from './Game';
+import { KeyControls } from "./KeyControls";
+import { Player } from "./Player";
+
+
+
 const game = new Game(800, 480);
-const {background, grid, scene, w, h} = game;
+const {background, scene, w, h} = game;
 //const head = new Sprite(new Texture("res/Images/head.png"));
 //const openEye = new Sprite(new Texture("res/Images/openEye.png"));
 //const blinkEye = new Sprite(new Texture("res/Images/blinkEye.png"));
@@ -8,13 +17,11 @@ const {background, grid, scene, w, h} = game;
 const textContent = new Container();
 scene.add(textContent);
 
-initMesh(w, h);
-grid.add(mesh);
 
-initBkGround(w, h);
+const bkGround = new Background(w, h);
 background.add(bkGround);
-player = 2;
 
+const player: number = 2;
 const keys = new KeyControls();
 const player1 = new Player({x: 1, y: 0}, {x: 80, y: 240}, "Lightblue", "Blue");
 const player2 = new Player({x: -1, y: 0}, {x: 720, y: 240}, "Lightgreen", "Green");
