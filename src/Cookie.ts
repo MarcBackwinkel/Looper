@@ -4,8 +4,37 @@ import { Circle } from "./Renderer/Circle";
 import { Square } from "./Renderer/Square";
 import { Sprite } from "./Renderer/Sprite";
 import { Texture } from "./Renderer/Texture";
+import { Updatable } from "./Renderer/Updatable";
 
-class Cookie {
+class BlackHole implements Updatable {
+
+    t0: number;
+    circle: Circle;
+    r: number;
+    dead: boolean;
+
+    constructor(t0: number){
+        this.t0 = t0;
+        this.r = 0;
+        this.circle = new Circle(this.r, {"fill": "black"})
+        this.dead = false;
+    }
+
+    update(dt: number, t:number){
+        if ((this.r < 80) && (t-this.t0 < 0.4)){
+            this.r += 100/(0.1/dt);
+        }
+        if (t-this.t0 > 1){
+            this.r -= 100/(0.1/dt);
+        }
+        if (this.r < 0){
+            this.dead = true;
+        };
+    }
+
+}
+
+class Cookie implements Updatable {
     
     isInTheGame: boolean;
     droppingInProgress: boolean;
@@ -14,16 +43,18 @@ class Cookie {
     h: number;
     player1: Player;
     player2: Player;
+    t0: number;
 
     //#unsicher bei Default-Wert fuer Player2
     //alt: constructor(w: number, h: number, player1: Player, player2: Player = {}}){
-	constructor(w: number, h: number, player1: Player, player2: Player = null){
+	constructor(w: number, h: number, t0: number, player1: Player, player2: Player = null){
 		this.isInTheGame = false;
 		this.droppingInProgress = false;
 //		this.animationSequence = 0;
 		this.delicious = new Container();
 		this.w = w;
-		this.h = h;
+        this.h = h;
+        this.t0 = t0;
 		this.player1 = player1;
 		this.player2 = player2;
 	}
@@ -43,6 +74,12 @@ class Cookie {
         });
         const cookieRef = this.createCookie();
         const transpBlock = this.createTranspBlock();
+
+        const blackBox = new Container();
+        blackBox.update = (dt: number, t: number) => {
+
+        }
+        
 		
 		const dropCookie = new Container();
 		let animationSequence: number = 1;

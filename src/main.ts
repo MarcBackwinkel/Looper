@@ -105,11 +105,30 @@ function updateBody(dt, t){
 	if (!player1.gameOver && !player2.gameOver){
 		
 		//Drop Cookie if none exists, start delay is 6 seconds
-		if (!cookie.isInTheGame && !cookie.droppingInProgess && (t > 6)){
-			cookie.drop();
-			lastHole = t;
-		}
-		
+		if (!cookie.isInTheGame && !cookie.droppingInProgress && (t > 6)){
+            const blackHole = new Container();
+            
+            const transpBox = new Container();
+
+        }
+
+		switch timeCounter {
+            case 1 - 20:    timeCounter++;
+                            break;
+            case 21-25:     timeCounter++;
+                            blackHole.open();                                
+                            break;
+            case 26:        timeCounter++;
+                            cookie.drop();
+                        transpBox.drop();
+                            break;
+            case 27 - 66:   timeCounter++;
+                            transpBox.vanish();
+                            break;
+            case 67 - 70:   timeCounter++;
+                            blackHole.close();
+                            break;
+        }
 		player1.getControls(keys.x2, keys.y2);
 		
 		if (player === 2){

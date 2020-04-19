@@ -1,30 +1,37 @@
-import Position from './Renderer/Position';
-import { CanvasElement } from './Renderer/CanvasElement';
+import { Position } from './Renderer/Position';
 
 class Container {
 
     pos: Position;
-    children[]: CanvasElement;
+    children: Container[];
     counter: number;
+    dead: boolean;
+    t0: number;
 
 	constructor(){
 		this.pos = new Position(0, 0);
 		this.children = [];
-		this.counter = 0;
-	}
+        this.counter = 0;
+        this.dead = false;
+    }
+    
+    setStartTime(t: number){
+        this.t0 = t;
+    }
+
 	//Container methods
-	add (child){
+	add (child: Container){
 		this.children.push(child);
 		return child;
 	}
-	remove (child){
+	remove (child: Container){
 		this.children = this.children.filter(c => c !== child);
 		return child;
 	}
 	removeAll(){
 		this.children = [];
 	}
-	update(dt, t){
+	update(dt: number, t: number){
 		this.children = this.children.filter(child => {
 			if (child.update){
 				child.update(dt, t);
